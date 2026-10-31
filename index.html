@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-Based Interview Question Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>AI-Based Interview Question Generator</h1>
+      <p>Role-specific interview questions with scoring rubrics</p>
+    </div>
+    <button id="themeBtn" class="ghost" title="Toggle dark mode">Dark / Light</button>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>1. Choose your interview</h2>
+      <div class="grid">
+        <label>Role
+          <select id="role"></select>
+        </label>
+        <label>Difficulty
+          <select id="level">
+            <option>Mixed</option>
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <label>Number of questions
+          <input type="number" id="count" min="1" max="20" value="8">
+        </label>
+      </div>
+
+      <label class="block">Skill areas</label>
+      <div id="skills" class="chips"></div>
+
+      <label class="toggle">
+        <input type="checkbox" id="useAI">
+        <span>Use AI mode (Gemini) for fresh, unique questions</span>
+      </label>
+      <div id="aiBox" class="hidden ai-box">
+        <label>Gemini API key
+          <input type="password" id="apiKey" placeholder="Paste your key (stays in your browser, never saved)">
+        </label>
+        <label>Model
+          <input type="text" id="model" value="gemini-2.0-flash">
+        </label>
+        <small>If the AI call fails, the app automatically falls back to the offline generator.</small>
+      </div>
+
+      <button id="generateBtn" class="primary">Generate Questions</button>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section id="results" class="hidden">
+      <div class="results-bar">
+        <div>
+          <h2>2. Your questions</h2>
+          <p id="summary" class="muted"></p>
+        </div>
+        <div class="actions">
+          <button id="copyBtn" class="ghost">Copy all</button>
+          <button id="txtBtn" class="ghost">Download TXT</button>
+          <button id="jsonBtn" class="ghost">Download JSON</button>
+          <button id="printBtn" class="ghost">Print / PDF</button>
+        </div>
+      </div>
+      <div id="total" class="total"></div>
+      <div id="list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built with HTML, CSS and JavaScript • Optional Gemini AI integration • Made by Ayush Tomar</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

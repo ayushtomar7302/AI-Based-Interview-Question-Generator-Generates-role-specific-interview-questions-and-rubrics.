@@ -1,0 +1,78 @@
+:root {
+  --bg: #f4f6fb; --card: #ffffff; --text: #1c2333; --muted: #667085;
+  --primary: #3b5bdb; --primary-d: #2f49b3; --border: #dfe3ee;
+  --easy: #2f9e44; --medium: #e8890c; --hard: #d6336c;
+}
+body.dark {
+  --bg: #11141c; --card: #1a1f2b; --text: #e8ebf3; --muted: #9aa3b5;
+  --primary: #748ffc; --primary-d: #5c7cfa; --border: #2a3142;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.5;
+}
+header {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 22px 6vw; background: linear-gradient(120deg, #3b5bdb, #7048e8); color: #fff;
+}
+header h1 { margin: 0; font-size: 1.6rem; }
+header p { margin: 4px 0 0; opacity: .9; }
+main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.panel, .card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; margin-bottom: 18px;
+}
+h2 { margin: 0 0 14px; font-size: 1.2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: .92rem; }
+label.block { margin-top: 16px; }
+select, input[type=text], input[type=password], input[type=number] {
+  padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg); color: var(--text); font-size: .95rem;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.chip { flex-direction: row; align-items: center; font-weight: 500; cursor: pointer; }
+.chip input { display: none; }
+.chip span {
+  padding: 6px 14px; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--bg); transition: .15s;
+}
+.chip input:checked + span { background: var(--primary); color: #fff; border-color: var(--primary); }
+.toggle { flex-direction: row; align-items: center; gap: 10px; margin: 18px 0 8px; font-weight: 500; cursor: pointer; }
+.ai-box { display: grid; gap: 12px; padding: 14px; border: 1px dashed var(--border); border-radius: 10px; margin-bottom: 12px; }
+.ai-box small, .muted { color: var(--muted); }
+button { font: inherit; cursor: pointer; border-radius: 8px; padding: 10px 18px; border: 1px solid transparent; }
+button.primary { background: var(--primary); color: #fff; font-weight: 600; margin-top: 10px; }
+button.primary:hover { background: var(--primary-d); }
+button.primary:disabled { opacity: .6; cursor: wait; }
+button.ghost { background: transparent; color: inherit; border-color: var(--border); padding: 8px 14px; font-size: .88rem; }
+header .ghost { color: #fff; border-color: rgba(255,255,255,.5); }
+button.ghost:hover { border-color: var(--primary); }
+.status { color: var(--hard); margin: 10px 0 0; min-height: 1.2em; }
+.hidden { display: none !important; }
+.results-bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.total { padding: 10px 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; font-weight: 600; }
+.card-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.num { font-weight: 700; color: var(--primary); }
+.tag { font-size: .78rem; padding: 3px 10px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); }
+.lvl.Easy { color: var(--easy); } .lvl.Medium { color: var(--medium); } .lvl.Hard { color: var(--hard); }
+.q { font-size: 1.05rem; font-weight: 600; margin: 12px 0 6px; }
+.follow { margin: 0 0 10px; color: var(--muted); font-size: .92rem; }
+details { margin-top: 8px; }
+summary { cursor: pointer; font-weight: 600; color: var(--primary); }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: .9rem; }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; vertical-align: top; }
+th { background: var(--bg); }
+.bands { display: flex; flex-wrap: wrap; gap: 14px; font-size: .85rem; color: var(--muted); }
+.selfscore { margin-top: 12px; }
+.selfscore label { flex-direction: row; align-items: center; gap: 10px; font-weight: 500; }
+.selfscore input { width: 80px; }
+footer { text-align: center; padding: 24px; color: var(--muted); font-size: .88rem; }
+@media print {
+  header, .panel, .actions, .selfscore, footer { display: none !important; }
+  details { display: block; } details > * { display: block; }
+  body { background: #fff; color: #000; }
+  .card { break-inside: avoid; }
+}
